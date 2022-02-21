@@ -145,7 +145,7 @@ export const ShoppingItemForm = ({handleClose, item = undefined}) => {
                     </Stack>
                 </Stack>
                 <Box
-                    marginTop={24}
+                    marginTop={12}
                     display="flex"
                     justifyContent={'flex-end'}
                     paddingBottom={3}

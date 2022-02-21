@@ -91,13 +91,18 @@ function Homepage() {
                 {hasItems ? (
                     <Stack spacing={1} width="80%">
                         <ShoppingListHeader handleOpen={handleOpen} />
-                        {items.map((item) => (
-                            <ShoppingListItem
-                                key={item.id}
-                                item={item}
-                                editItem={editItem}
-                            />
-                        ))}
+                        {items
+                            .sort(
+                                (x, y) =>
+                                    Number(x.purchased) - Number(y.purchased)
+                            )
+                            .map((item) => (
+                                <ShoppingListItem
+                                    key={item.id}
+                                    item={item}
+                                    editItem={editItem}
+                                />
+                            ))}
                     </Stack>
                 ) : (
                     <ShoppingListEmpty handleOpen={handleOpen} />

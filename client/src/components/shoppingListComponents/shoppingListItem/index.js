@@ -39,7 +39,7 @@ export const ShoppingListItem = ({item, editItem}) => {
                     checked={item.purchased}
                 />
                 <Stack spacing={2} marginLeft={2}>
-                    <Box>{item.name}</Box>
+                    <Box>{`${item.name} - buy ${item.quantity}`}</Box>
                     <Box sx={{color: '#5c6269'}}>{item.description}</Box>
                 </Stack>
                 <Box marginLeft="auto" alignSelf="center">

@@ -15,6 +15,7 @@ const app = express()
 
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
+app.use(express.static(path.join(__dirname, '../client/build')))
 
 //Routes
 app.get('/api/list', async (req, res) => {
@@ -54,6 +55,10 @@ app.patch('/api/item', async (req, res) => {
         requestBody.data
     )
     res.json(response.data)
+})
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'))
 })
 
 app.listen(PORT, () => {

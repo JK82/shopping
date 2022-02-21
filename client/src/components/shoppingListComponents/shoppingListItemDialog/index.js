@@ -10,7 +10,7 @@ export const ShoppingItemDialog = ({handleClose, open, itemToEdit}) => {
         <Dialog open={open} onClose={handleClose}>
             <DialogTitle sx={{backgroundColor: '#fafafa'}} marginBottom={2}>
                 <Box display="flex" justifyContent="space-between">
-                    <Box>SHOPING LIST</Box>
+                    <Box>SHOPPING LIST</Box>
                     <Box>
                         <CloseIcon onClick={handleClose} />
                     </Box>

@@ -1,12 +1,6 @@
 import * as React from 'react'
-import AppBar from '@mui/material/AppBar'
 import Box from '@mui/material/Box'
-import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
-import IconButton from '@mui/material/IconButton'
-import {UserButton} from '@clerk/clerk-react'
-import CircularProgress from '@mui/material/CircularProgress'
 import Stack from '@mui/material/Stack'
 
 export const ShoppingListEmpty = ({handleOpen}) => {

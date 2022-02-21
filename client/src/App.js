@@ -92,7 +92,11 @@ function Homepage() {
                     <Stack spacing={1} width="80%">
                         <ShoppingListHeader handleOpen={handleOpen} />
                         {items.map((item) => (
-                            <ShoppingListItem item={item} editItem={editItem} />
+                            <ShoppingListItem
+                                key={item.id}
+                                item={item}
+                                editItem={editItem}
+                            />
                         ))}
                     </Stack>
                 ) : (

@@ -2,8 +2,8 @@ import React from 'react'
 import Box from '@mui/material/Box'
 import Dialog from '@mui/material/Dialog'
 import DialogTitle from '@mui/material/DialogTitle'
-import LastPageIcon from '@mui/icons-material/LastPage'
-import {ShoppingItemForm} from '../../shoppingItemForm'
+import CloseIcon from '@mui/icons-material/Close'
+import {ShoppingItemForm} from '../shoppingItemForm'
 
 export const ShoppingItemDialog = ({handleClose, open, itemToEdit}) => {
     return (
@@ -12,7 +12,7 @@ export const ShoppingItemDialog = ({handleClose, open, itemToEdit}) => {
                 <Box display="flex" justifyContent="space-between">
                     <Box>SHOPING LIST</Box>
                     <Box>
-                        <LastPageIcon />
+                        <CloseIcon onCLick={handleClose} />
                     </Box>
                 </Box>
             </DialogTitle>

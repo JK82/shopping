@@ -12,10 +12,10 @@ import Box from '@mui/material/Box'
 import Stack from '@mui/material/Stack'
 import useShoppingList, {ShoppingListProvider} from './hooks/useShoppingList'
 import {Loader} from './components/loader'
-import {ShoppingListItem} from './components/shoppingListComponents/shoppingItemForm/shoppingListItem'
-import {ShoppingListHeader} from './components/shoppingListComponents/shoppingItemForm/shoppingListHeader'
-import {ShoppingListEmpty} from './components/shoppingListComponents/shoppingItemForm/shoppingListEmpty'
-import {ShoppingItemDialog} from './components/shoppingListComponents/shoppingItemForm/shoppingListItemDialog'
+import {ShoppingListItem} from './components/shoppingListComponents/shoppingListItem'
+import {ShoppingListHeader} from './components/shoppingListComponents/shoppingListHeader'
+import {ShoppingListEmpty} from './components/shoppingListComponents/shoppingListEmpty'
+import {ShoppingItemDialog} from './components/shoppingListComponents/shoppingListItemDialog'
 const frontendApi = process.env.REACT_APP_CLERK_FRONTEND_API
 
 function App() {

@@ -5,7 +5,7 @@ import Checkbox from '@mui/material/Checkbox'
 import Stack from '@mui/material/Stack'
 import ModeEditOutlineIcon from '@mui/icons-material/ModeEditOutline'
 import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline'
-import useShoppingList from '../../../../hooks/useShoppingList'
+import useShoppingList from '../../../hooks/useShoppingList'
 
 export const ShoppingListItem = ({item, editItem}) => {
     const shoppingList = useShoppingList()

@@ -34,7 +34,6 @@ const createShoppingList = async (supabaseAccessToken, data) => {
 const createShoppingListItem = async (supabaseAccessToken, data) => {
     const supabase = await initSupabase(supabaseAccessToken)
     const response = await await supabase.from('items').insert([data])
-    console.log(response)
     return response
 }
 

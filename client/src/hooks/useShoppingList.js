@@ -22,7 +22,6 @@ export default function useShoppingList() {
             },
 
             get hasItems() {
-                console.log(shoppingList)
                 return shoppingList?.items?.length > 0
             },
 

@@ -37,7 +37,6 @@ app.post('/api/item', async (req, res) => {
         requestBody.accesstoken,
         requestBody.data
     )
-    console.log(response)
     res.json(response.data)
 })
 

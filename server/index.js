@@ -1,5 +1,6 @@
 require('dotenv').config({path: __dirname + '/.env.local'})
 const express = require('express')
+const path = require('path')
 var bodyParser = require('body-parser')
 const {
     getShoppingListAndItems,

@@ -1,7 +1,7 @@
 # shopping
 A simple shopping list application using React, Node, Express, Clerk (acount management), Supabase (database), MUI & deployed to Heroku
 
-Visit the deployed app [Here](https://shopping-veri.herokuapp.com/) - you will need to accept some cookies as Clerk is in dev mode for this project
+Visit the deployed app [Here](https://shopping-veri.herokuapp.com/) - you will need to accept some cookies as Clerk is in dev mode for this project <br />
 Check your spam folder for sign up email
 
 ## Running the project locally

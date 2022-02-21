@@ -20,7 +20,7 @@ export const Header = () => {
                         sx={{mr: 2}}
                     ></IconButton>
                     <Typography variant="h6" component="div" sx={{flexGrow: 1}}>
-                        Shopping List
+                        SHOPPING LIST
                     </Typography>
                     <UserButton />
                 </Toolbar>

@@ -1,23 +1,46 @@
 import * as React from 'react'
-import {useFormik} from 'formik'
+import {Field, FormikProvider, useFormik} from 'formik'
+import * as Yup from 'yup'
 import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
 import Stack from '@mui/material/Stack'
-import DialogTitle from '@mui/material/DialogTitle'
-import Dialog from '@mui/material/Dialog'
 import TextField from '@mui/material/TextField'
 import Select from '@mui/material/Select'
 import MenuItem from '@mui/material/MenuItem'
-import {
-    Checkbox,
-    Container,
-    FormControl,
-    FormControlLabel,
-    LinearProgress
-} from '@mui/material'
-import {useApi} from '../../hooks/useApi'
-import useShoppingList from '../../hooks/useShoppingList'
-import {PlainButton} from '../buttons'
+import Checkbox from '@mui/material/Checkbox'
+import Container from '@mui/material/Container'
+import FormControl from '@mui/material/FormControl'
+import FormControlLabel from '@mui/material/FormControlLabel'
+import LinearProgress from '@mui/material/LinearProgress'
+import useShoppingList from '../../../hooks/useShoppingList'
+import {PlainButton} from '../../buttons'
+
+const CustomizedSelectForFormik = ({children, form, field}) => {
+    const {name, value} = field
+    const {setFieldValue} = form
+
+    return (
+        <Select
+            name={name}
+            value={value}
+            onChange={(e) => {
+                setFieldValue(name, e.target.value)
+            }}
+        >
+            {children}
+        </Select>
+    )
+}
+
+const ItemSchema = Yup.object().shape({
+    name: Yup.string()
+        .min(2, 'Too Short!')
+        .max(50, 'Too Long!')
+        .required('Required'),
+    description: Yup.string()
+        .min(2, 'Too Short!')
+        .max(100, 'Too Long!')
+        .required('Required')
+})
 
 export const ShoppingItemForm = ({handleClose, item = undefined}) => {
     const [isEdit, setIsEdit] = React.useState(false)
@@ -36,6 +59,7 @@ export const ShoppingItemForm = ({handleClose, item = undefined}) => {
             quantity: item?.quantity || 1,
             purchased: item?.purchased
         },
+        validationSchema: ItemSchema,
         onSubmit: (values) => {
             if (isEdit) {
                 values.id = item.id
@@ -69,11 +93,17 @@ export const ShoppingItemForm = ({handleClose, item = undefined}) => {
                             variant="outlined"
                             value={formik.values.name}
                             onChange={formik.handleChange}
+                            error={formik.errors.name}
+                            helperText={formik.errors.name}
                         />
+
                         <TextField
                             multiline={true}
                             rows={6}
-                            helperText={`${formik.values.description.length}/100`}
+                            helperText={
+                                formik.errors.description ||
+                                `${formik.values.description.length}/100`
+                            }
                             sx={{width: '100%'}}
                             id="description"
                             label="Description"
@@ -81,19 +111,24 @@ export const ShoppingItemForm = ({handleClose, item = undefined}) => {
                             inputProps={{maxLength: 100}}
                             value={formik.values.description}
                             onChange={formik.handleChange}
+                            error={formik.errors.description}
                         />
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="quantity"
-                            placeholder="How many?"
-                            label="How many"
-                            value={formik.values.quantity}
-                            onChange={formik.handleChange}
-                        >
-                            <MenuItem value={1}>1</MenuItem>
-                            <MenuItem value={2}>2</MenuItem>
-                            <MenuItem value={3}>3</MenuItem>
-                        </Select>
+
+                        <FormikProvider value={formik}>
+                            <FormControl>
+                                <Field
+                                    id="quantity"
+                                    name="quantity"
+                                    component={CustomizedSelectForFormik}
+                                >
+                                    <MenuItem value={1}>1</MenuItem>
+                                    <MenuItem value={2}>2</MenuItem>
+                                    <MenuItem value={3}>3</MenuItem>
+                                    <MenuItem value={4}>4</MenuItem>
+                                    <MenuItem value={5}>5</MenuItem>
+                                </Field>
+                            </FormControl>
+                        </FormikProvider>
                         {isEdit && (
                             <FormControlLabel
                                 control={

@@ -31,7 +31,6 @@ app.post('/api/list', async (req, res) => {
 
 app.post('/api/item', async (req, res) => {
     const requestBody = req.body
-    console.log(requestBody)
     const response = await createShoppingListItem(
         requestBody.accesstoken,
         requestBody.data
@@ -41,15 +40,20 @@ app.post('/api/item', async (req, res) => {
 })
 
 app.delete('/api/item', async (req, res) => {
-    const {userId, accesstoken} = req.body
-    const {data} = await deleteShoppingListItem(accesstoken, {user_id: userId})
+    const requestBody = req.body
+    const {data} = await deleteShoppingListItem(requestBody.accesstoken, {
+        id: requestBody.itemId
+    })
     res.json(data)
 })
 
 app.patch('/api/item', async (req, res) => {
-    const {userId, accesstoken} = req.body
-    const {data} = await updateShoppingListItem(accesstoken, {user_id: userId})
-    res.json(data)
+    const requestBody = req.body
+    const response = await updateShoppingListItem(
+        requestBody.accesstoken,
+        requestBody.data
+    )
+    res.json(response.data)
 })
 
 app.listen(PORT, () => {

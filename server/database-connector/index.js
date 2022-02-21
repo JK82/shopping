@@ -32,7 +32,6 @@ const createShoppingList = async (supabaseAccessToken, data) => {
 }
 
 const createShoppingListItem = async (supabaseAccessToken, data) => {
-    console.log(data)
     const supabase = await initSupabase(supabaseAccessToken)
     const response = await await supabase.from('items').insert([data])
     console.log(response)
@@ -50,10 +49,7 @@ const updateShoppingListItem = async (supabaseAccessToken, data) => {
 
 const deleteShoppingListItem = async (supabaseAccessToken, data) => {
     const supabase = await initSupabase(supabaseAccessToken)
-    const response = await await supabase
-        .from('items')
-        .delete()
-        .match({id: data.id})
+    const response = await supabase.from('items').delete().match({id: data.id})
     return response
 }
 

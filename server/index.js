@@ -58,7 +58,7 @@ app.patch('/api/item', async (req, res) => {
     res.json(response.data)
 })
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build/index.html'))
 })
 

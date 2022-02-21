@@ -12,7 +12,7 @@ export const ShoppingItemDialog = ({handleClose, open, itemToEdit}) => {
                 <Box display="flex" justifyContent="space-between">
                     <Box>SHOPING LIST</Box>
                     <Box>
-                        <CloseIcon onCLick={handleClose} />
+                        <CloseIcon onClick={handleClose} />
                     </Box>
                 </Box>
             </DialogTitle>
